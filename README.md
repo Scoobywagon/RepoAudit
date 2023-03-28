@@ -26,3 +26,7 @@ Edit lines 50-55 in auditlog.py.  Eventually, these will be moved over to the co
 
 Runtime:
 When run, the script provides a modicum of console output to let you know what it is doing.  When complete, it produces a CSV file named <hostname>.csv in the same directory as the script.  The name of the file is derived from the hostname where the repository is located.  
+
+The script can be run with or without command line parameters.  When run WITHOUT parameters, it will calculate start and end times to cover all of the previous day.  In this way, it can be run as a Scheduled Task (windows) or a crontab (*NIX) every day and ensure that you retain the entire day.  
+If you need to pull a specific window of time, you can run the script with EXACTLY 2 parameters.  The first parameter should be your start date, the second should be your end date.  Both parameters need to be in YYYY-mm-dd format.
+If you would like to dump EVERYTHING that is currently in the repo, I recommend pulling it in chunks no larger than 30 days.  Less busy deployments will not have an issue.  But busy deployments will have very large repositories and pulling more than 30 days at a time can result in timeouts or performance issues with Tableau Server.
